@@ -121,7 +121,7 @@ vim.opt.signcolumn = 'yes'
 vim.opt.updatetime = 250
 
 -- Decrease mapped sequence wait time
--- Displays which-key popup sooner
+-- Displays -key popup sooner
 vim.opt.timeoutlen = 300
 
 -- Configure how new splits should be opened
@@ -137,7 +137,7 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
--- Show which line your cursor is on
+-- Show  line your cursor is on
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
@@ -157,7 +157,7 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagn
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
--- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, 
 -- is not what someone will guess without a bit more experience.
 --
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
@@ -290,19 +290,17 @@ require('lazy').setup({
       require('which-key').setup()
 
       -- Document existing key chains
-      require('which-key').register {
-        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
-      }
-      -- visual mode
-      require('which-key').register({
-        ['<leader>h'] = { 'Git [H]unk' },
-      }, { mode = 'v' })
+     			require("which-key").add({
+				{
+					{ "<leader>c", group = "[C]ode" },
+					{ "<leader>d", group = "[D]ocument" },
+					{ "<leader>r", group = "[R]ename" },
+					{ "<leader>s", group = "[S]earch" },
+					{ "<leader>w", group = "[W]orkspace" },
+					{ "<leader>t", group = "[T]oggle" },
+					{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+				},
+			})
     end,
   },
 
